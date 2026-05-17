@@ -1,0 +1,10 @@
+.vagrant/
+*.log
+*.tmp
+*~
+*.swp
+.DS_Store
+Thumbs.db
+*.box
+*.iso
+*.retry
