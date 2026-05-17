@@ -8,7 +8,7 @@ Automated deployment of three VMs on RockyLinux 9: router, client-a, client-b. T
 
 ## Launching:
 ```bash
-git clone <repo-url>
+git clone https://github.com/dmitryfeoktist-stack/linux-router
 cd linux-router
 vagrant up
 ```
