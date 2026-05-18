@@ -14,7 +14,7 @@ vagrant up
 ```
 
 ## Troubleshooting:
-If automatic download does not work, download the box manually using the link below and add it under the correct name:
+If automatic download doesn't work, download the box manually using the link below and add it under the correct name:
 ```bash
 vagrant box add --name rockylinux/9 path/to/file/Rocky-9-Vagrant-VBox.latest.x86_64.box --force
 ```
