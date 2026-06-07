@@ -13,6 +13,10 @@ cd linux-router
 vagrant up
 ```
 
+## Testing:
+```bash
+bash test/test.sh
+```
 ## Troubleshooting:
 If automatic download doesn't work, download the box manually using the link below and add it under the correct name:
 ```bash
