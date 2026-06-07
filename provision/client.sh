@@ -15,4 +15,6 @@ nmcli con up static-lab
 nmcli con mod "Wired connection 1" ipv4.method disabled || true
 nmcli con down "Wired connection 1" 2>/dev/null || true
 
+ip route del default via 10.0.2.2 dev eth0 2>/dev/null || true
+
 echo "Client configured: IP=$IP, Gateway=$GATEWAY"
