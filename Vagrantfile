@@ -3,14 +3,14 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "rockylinux/9"
-  config.vm.synced_folder ".", "/vagrant", disabled: true   # не синхронизируем папку
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.boot_timeout = 600
   config.vm.define "router" do |router|
     router.vm.hostname = "router"
     router.vm.provider "virtualbox" do |vb|
       vb.memory = 512
       vb.cpus = 1
     end
-    router.vm.network "public_network", use_dhcp_assigned_default_route: true
     router.vm.network "private_network", ip: "192.168.100.1", virtualbox__intnet: "intnet-a"
     router.vm.network "private_network", ip: "192.168.200.1", virtualbox__intnet: "intnet-b"
     router.vm.provision "shell", path: "provision/router.sh"
