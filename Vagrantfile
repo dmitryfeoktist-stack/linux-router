@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     end
     router.vm.network "private_network", ip: "192.168.100.1", virtualbox__intnet: "intnet-a"
     router.vm.network "private_network", ip: "192.168.200.1", virtualbox__intnet: "intnet-b"
-    router.vm.provision "shell", path: "provision/router.sh"
+    router.vm.provision "shell", path: "provision/router.sh", args: "eth0"
   end
 
   config.vm.define "client-a" do |client|
