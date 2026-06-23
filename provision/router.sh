@@ -1,5 +1,6 @@
 #!/bin/bash
 set -ex
+exec > /tmp/router-provision.log 2>&1
 
 if [ -f /etc/centos-release ] && grep -q "CentOS Linux release 7" /etc/centos-release; then
     echo "CentOS 7 detected, switching to vault repos..."

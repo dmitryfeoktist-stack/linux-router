@@ -1,5 +1,8 @@
 #!/bin/bash
 set -ex
+
+exec > /tmp/client-provision.log 2>&1
+
 IFACE=$1
 IP=$2
 GATEWAY=$3
