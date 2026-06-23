@@ -43,6 +43,9 @@ else
     exit 1
 fi
 
+systemctl stop firewalld
+systemctl disable firewalld
+
 $PKG_MGR install iptables-services -y
 
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
