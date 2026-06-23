@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "almalinux/9"
+  config.vm.box = "generic/rocky9"
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.boot_timeout = 600
   config.vm.provider "virtualbox" do |vb|
@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
   vb.customize ["modifyvm", :id, "--vtxvpid", "on"]
   vb.customize ["modifyvm", :id, "--audio", "none"]
   vb.customize ["modifyvm", :id, "--usb", "off"]
+  vb.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
+  vb.customize ["modifyvm", :id, "--vram", "16"]
 end
   config.vm.define "router" do |router|
     router.vm.hostname = "router"
