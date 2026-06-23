@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -ex
 IFACE=$1
 IP=$2
 GATEWAY=$3
