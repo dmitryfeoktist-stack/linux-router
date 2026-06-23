@@ -6,6 +6,9 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.boot_timeout = 600
   config.vm.provider "virtualbox" do |vb|
+    vb.memory=512
+    vb.cpus=1
+    vb.gui=false
     vb.customize ["modifyvm", :id, "--firmware", "efi"]
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
     vb.customize ["modifyvm", :id, "--pae", "on"]
