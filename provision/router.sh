@@ -53,6 +53,11 @@ if ! ip a show $1 | grep -q "inet "; then
     dhclient $1 || true
 fi
 
+if ! ip route show default | grep -q "via"; then
+    echo "No default route, adding via 10.0.2.2"
+    ip route add default via 10.0.2.2
+fi
+
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
 
