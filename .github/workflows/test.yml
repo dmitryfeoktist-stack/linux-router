@@ -21,7 +21,10 @@ jobs:
           sudo apt install -y virtualbox vagrant
 
       - name: Start VMs
-        run: vagrant up
+        run: |
+          vagrant up router --no-tty
+          vagrant up client-a --no-tty
+          vagrant up client-b --no-tty
 
       - name: Run tests
         run: bash test/test.sh
