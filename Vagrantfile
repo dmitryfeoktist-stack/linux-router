@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     vb.memory=512
     vb.cpus=1
     vb.gui=false
-    vb.customize ["modifyvm", :id, "--firmware", "efi"]
+    #vb.customize ["modifyvm", :id, "--firmware", "efi"]
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
     vb.customize ["modifyvm", :id, "--pae", "on"]
     vb.customize ["modifyvm", :id, "--hwvirtex", "on"]

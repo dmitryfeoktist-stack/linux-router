@@ -15,10 +15,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install VirtualBox and Vagrant
+      - name: Install VirtualBox 7.0 and Vagrant
         run: |
           sudo apt update
-          sudo apt install -y virtualbox vagrant
+          sudo apt install -y wget
+          wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+          echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian jammy contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+          sudo apt-get update
+          sudo apt-get install -y virtualbox-7.0
+          sudo /sbin/vboxconfig
+          sudo apt-get install -y vagrant
 
       - name: Start VMs
         run: |
