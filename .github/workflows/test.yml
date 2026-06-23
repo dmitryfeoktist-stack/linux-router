@@ -44,26 +44,6 @@ jobs:
           vagrant ssh router -c "cat /tmp/router-provision.log" 2>/dev/null || echo "No log file found"
           echo "=== Client-A provisioning log (if any) ==="
           vagrant ssh client-a -c "cat /tmp/client-provision.log" 2>/dev/null || true
-      - name: Debug network on router and clients
-        run: |
-          echo "=== Router network interfaces ==="
-          vagrant ssh router -c "ip a"
-          echo "=== Router default route ==="
-          vagrant ssh router -c "ip route show default"
-          echo "=== Router ping 10.0.2.2 (NAT gateway) ==="
-          vagrant ssh router -c "ping -c 2 10.0.2.2" || true
-          echo "=== Router ping 8.8.8.8 ==="
-          vagrant ssh router -c "ping -c 2 8.8.8.8" || true
-          echo "=== Router iptables NAT ==="
-          vagrant ssh router -c "sudo iptables -t nat -L POSTROUTING -n -v" || true
-          echo "=== Router iptables FORWARD ==="
-          vagrant ssh router -c "sudo iptables -L FORWARD -n -v" || true
-          echo "=== Client-A default route ==="
-          vagrant ssh client-a -c "ip route show default" || true
-          echo "=== Client-A ping router ==="
-          vagrant ssh client-a -c "ping -c 2 192.168.100.1" || true
-          echo "=== Client-A ping 8.8.8.8 ==="
-          vagrant ssh client-a -c "ping -c 2 8.8.8.8" || true
 
       - name: Run tests
         run: bash test/test.sh

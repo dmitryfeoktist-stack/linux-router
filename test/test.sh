@@ -18,10 +18,10 @@ run_on client-a "ping -c 2 192.168.200.10"
 echo "4. Client-B ping Client-A"
 run_on client-b "ping -c 2 192.168.100.10"
 
-echo "5. Client-A has internet access (ping 8.8.8.8)"
-run_on client-a "ping -c 2 8.8.8.8"
+echo "5. Client-A has internet access (ping google.com)"
+run_on client-a "ping -c 2 google.com"
 
 echo "6. Client-B has internet access"
-run_on client-b "ping -c 2 8.8.8.8"
+run_on client-b "ping -c 2 google.com"
 
 echo "All tests passed successfully"
