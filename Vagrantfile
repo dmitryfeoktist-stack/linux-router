@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = ENV['CI'] ? "centos/7" : "rockylinux/9"
+  config.vm.box = ENV['CI'] ? "almalinux/9" : "rockylinux/9"
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.boot_timeout = 600
   config.vm.provider "virtualbox" do |vb|
