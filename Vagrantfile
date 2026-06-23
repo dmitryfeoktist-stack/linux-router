@@ -5,6 +5,16 @@ Vagrant.configure("2") do |config|
   config.vm.box = "almalinux/9"
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.boot_timeout = 600
+  config.vm.provider "virtualbox" do |vb|
+  vb.customize ["modifyvm", :id, "--ioapic", "on"]
+  vb.customize ["modifyvm", :id, "--pae", "on"]
+  vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
+  vb.customize ["modifyvm", :id, "--nestedpaging", "on"]
+  vb.customize ["modifyvm", :id, "--largepages", "on"]
+  vb.customize ["modifyvm", :id, "--vtxvpid", "on"]
+  vb.customize ["modifyvm", :id, "--audio", "none"]
+  vb.customize ["modifyvm", :id, "--usb", "off"]
+end
   config.vm.define "router" do |router|
     router.vm.hostname = "router"
     router.vm.provider "virtualbox" do |vb|
