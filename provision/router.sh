@@ -48,6 +48,11 @@ systemctl disable firewalld
 
 $PKG_MGR install iptables-services -y
 
+if ! ip a show $1 | grep -q "inet "; then
+    echo "$1 has no IP, requesting via DHCP..."
+    dhclient $1 || true
+fi
+
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
 

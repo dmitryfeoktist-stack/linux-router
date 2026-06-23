@@ -38,6 +38,7 @@ jobs:
           vagrant up --debug client-b --provider=virtualbox --no-tty
 
       - name: Show provisioning log (if failed)
+        if: failure()
         run: |
           echo "=== Router provisioning log ==="
           vagrant ssh router -c "cat /tmp/router-provision.log" 2>/dev/null || echo "No log file found"
