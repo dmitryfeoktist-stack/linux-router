@@ -3,10 +3,32 @@ set -ex
 exec > /tmp/router-provision.log 2>&1
 
 if [ -f /etc/centos-release ] && grep -q "CentOS Linux release 7" /etc/centos-release; then
-    echo "CentOS 7 detected, switching to vault repos..."
-    sed -i 's/mirror.centos.org/vault.centos.org/g' /etc/yum.repos.d/*.repo
-    sed -i 's/^#.*baseurl=/baseurl=/g' /etc/yum.repos.d/*.repo
-    sed -i 's/^mirrorlist=/#mirrorlist=/g' /etc/yum.repos.d/*.repo
+    echo "CentOS 7 detected, fixing repos to vault.centos.org..."
+    rm -f /etc/yum.repos.d/CentOS-*.repo
+
+    cat > /etc/yum.repos.d/CentOS-Base.repo <<EOF
+[base]
+name=CentOS-7 - Base
+baseurl=http://vault.centos.org/7.9.2009/os/x86_64/
+gpgcheck=1
+gpgkey=http://vault.centos.org/7.9.2009/os/x86_64/RPM-GPG-KEY-CentOS-7
+enabled=1
+
+[updates]
+name=CentOS-7 - Updates
+baseurl=http://vault.centos.org/7.9.2009/updates/x86_64/
+gpgcheck=1
+gpgkey=http://vault.centos.org/7.9.2009/os/x86_64/RPM-GPG-KEY-CentOS-7
+enabled=1
+
+[extras]
+name=CentOS-7 - Extras
+baseurl=http://vault.centos.org/7.9.2009/extras/x86_64/
+gpgcheck=1
+gpgkey=http://vault.centos.org/7.9.2009/os/x86_64/RPM-GPG-KEY-CentOS-7
+enabled=1
+EOF
+
     yum clean all
     yum makecache
 fi
