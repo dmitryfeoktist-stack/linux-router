@@ -18,10 +18,10 @@ run_on client-a "ping -c 2 192.168.200.10"
 echo "4. Client-B ping Client-A"
 run_on client-b "ping -c 2 192.168.100.10"
 
-echo "5. Client-A has internet access (ping google.com)"
-run_on client-a "ping -c 2 google.com"
+echo "5. Client-A has internet access (HTTP via 1.1.1.1)"
+run_on client-a "curl -s --max-time 5 http://1.1.1.1 > /dev/null" || exit 1
 
 echo "6. Client-B has internet access"
-run_on client-b "ping -c 2 google.com"
+run_on client-b "curl -s --max-time 5 http://1.1.1.1 > /dev/null" || exit 1
 
 echo "All tests passed successfully"
