@@ -22,9 +22,9 @@ jobs:
 
       - name: Start VMs
         run: |
-          vagrant up router --no-tty
-          vagrant up client-a --no-tty
-          vagrant up client-b --no-tty
+          vagrant up --debug router --no-tty
+          vagrant up --debug client-a --no-tty
+          vagrant up --debug client-b --no-tty
 
       - name: Run tests
         run: bash test/test.sh
