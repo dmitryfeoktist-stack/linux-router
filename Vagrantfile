@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
     router.vm.provider "virtualbox" do |vb|
       vb.memory = 512
       vb.cpus = 1
+      vb.gui = false
     end
     router.vm.network "private_network", ip: "192.168.100.1", virtualbox__intnet: "intnet-a"
     router.vm.network "private_network", ip: "192.168.200.1", virtualbox__intnet: "intnet-b"
@@ -21,6 +22,7 @@ Vagrant.configure("2") do |config|
     client.vm.provider "virtualbox" do |vb|
       vb.memory = 256
       vb.cpus = 1
+      vb.gui = false
     end
     client.vm.network "private_network", ip: "192.168.100.10", virtualbox__intnet: "intnet-a"
     client.vm.provision "shell", path: "provision/client.sh", args: "eth1 192.168.100.10 192.168.100.1"
@@ -31,6 +33,7 @@ Vagrant.configure("2") do |config|
     client.vm.provider "virtualbox" do |vb|
       vb.memory = 256
       vb.cpus = 1
+      vb.gui = false
     end
     client.vm.network "private_network", ip: "192.168.200.10", virtualbox__intnet: "intnet-b"
     client.vm.provision "shell", path: "provision/client.sh", args: "eth1 192.168.200.10 192.168.200.1"
