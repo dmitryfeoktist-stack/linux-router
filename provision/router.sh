@@ -7,7 +7,7 @@ echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
 
 iptables -t nat -A POSTROUTING -o $1 -j MASQUERADE
-service iptables save
+iptables-save > /etc/sysconfig/iptables
 systemctl enable iptables
 systemctl start iptables
 
