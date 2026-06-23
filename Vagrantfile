@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
     end
     router.vm.network "private_network", ip: "192.168.100.1", virtualbox__intnet: "intnet-a"
     router.vm.network "private_network", ip: "192.168.200.1", virtualbox__intnet: "intnet-b"
-    router.vm.provision "shell", path: "provision/router.sh", args: "eth0"
+    #router.vm.provision "shell", path: "provision/router.sh", args: "eth0"
   end
 
   config.vm.define "client-a" do |client|
@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
       vb.gui = false
     end
     client.vm.network "private_network", ip: "192.168.100.10", virtualbox__intnet: "intnet-a"
-    client.vm.provision "shell", path: "provision/client.sh", args: "eth1 192.168.100.10 192.168.100.1"
+    #client.vm.provision "shell", path: "provision/client.sh", args: "eth1 192.168.100.10 192.168.100.1"
   end
 
   config.vm.define "client-b" do |client|
@@ -52,6 +52,6 @@ Vagrant.configure("2") do |config|
       vb.gui = false
     end
     client.vm.network "private_network", ip: "192.168.200.10", virtualbox__intnet: "intnet-b"
-    client.vm.provision "shell", path: "provision/client.sh", args: "eth1 192.168.200.10 192.168.200.1"
+    #client.vm.provision "shell", path: "provision/client.sh", args: "eth1 192.168.200.10 192.168.200.1"
   end
 end
