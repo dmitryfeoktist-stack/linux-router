@@ -40,10 +40,10 @@ jobs:
       - name: Show provisioning log (if failed)
         if: failure()
         run: |
-        echo "=== Router provisioning log ==="
-        vagrant ssh router -c "cat /tmp/router-provision.log" 2>/dev/null || echo "No log file found"
-        echo "=== Client-A provisioning log (if any) ==="
-        vagrant ssh client-a -c "cat /tmp/client-provision.log" 2>/dev/null || true
+          echo "=== Router provisioning log ==="
+          vagrant ssh router -c "cat /tmp/router-provision.log" 2>/dev/null || echo "No log file found"
+          echo "=== Client-A provisioning log (if any) ==="
+          vagrant ssh client-a -c "cat /tmp/client-provision.log" 2>/dev/null || true
 
       - name: Run tests
         run: bash test/test.sh
