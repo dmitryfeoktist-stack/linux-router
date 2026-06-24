@@ -23,4 +23,4 @@ If automatic download doesn't work, download the box manually using the link bel
 vagrant box add --name rockylinux/9 path/to/file/Rocky-9-Vagrant-VBox.latest.x86_64.box --force
 ```
 ## Links:
-[vagrant box](https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-Vagrant-VBox.latest.x86_64.box)
+[vagrant box](https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-Vagrant-Vbox.latest.x86_64.vagrant.virtualbox.box)
